@@ -1,3 +1,1 @@
-# pymongo + robo3T
-# python
-# awsserver + filezilla
+setting: pymongo, robo3T, python, awsserver, filezilla
