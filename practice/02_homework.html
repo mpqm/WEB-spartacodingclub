@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <title>스토어</title>
+    <style>
+        .item-img {
+            width: 500px;
+            height: 300px;
+            background-image: url("http://www.altonsports.com/prdimg/get/21-INNOZEN24_P_01%281060X600%29.jpg");
+            background-position: center;
+            background-size: cover;
+        }
+
+        .item-help {
+            width: 500px;
+            margin: 20px 0px 20px 0px
+        }
+
+        .item-order {
+            width: 500px;
+        }
+
+        .wrap {
+            width: 500px;
+            margin: auto;
+        }
+
+        .btn-order {
+            width: 200px;
+            margin: auto;
+            display: block;
+        }
+    </style>
+    <script>
+        let count = 1;
+
+        function order() {
+            if (count % 2 == 0) {
+                alert('짝짝짝👏');
+            } else {
+                alert('홀홀홀🎅');
+            }
+            count += 1;
+        }
+
+        $(document).ready(function () {
+            get_rate();
+        });
+
+        function get_rate() {
+            $.ajax({
+                type: "GET",
+                url: "http://spartacodingclub.shop/sparta_api/rate",
+                data: {},
+                success: function (response) {
+                    let rate = response['rate']
+                    $('#now-rate').text(rate);
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+<div class="wrap">
+    <div class="item-img"></div>
+    <div class="item-help">
+        <h1>자전거 <span style="font-size: 30px">가격: 200,000원/대</span></h1>
+        <p>이 상품으로 말할 것 같으면 용왕이 찾지 못한 토끼의 간을 찾아 빨간망토의 늑대와 아기 돼지 삼형제의 숨결이 고루 녹아 있는 타면 120세까지 살 수 있다.</p>
+        <p class="rate"> 달러-원 환율 : <span id="now-rate"> 0 </span></p>
+    </div>
+    <div class="item-order">
+        <div class="form-group">
+            <label for="exampleFormControlInput1">주문자이름</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">주문수량</label>
+            <select class="form-control" id="exampleFormControlSelect1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">주소</label>
+            <input type="text" class="form-control" id="exampleFormControlInput2">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlInput1">전화번호</label>
+            <input type="text" class="form-control" id="exampleFormControlInput3">
+        </div>
+        <button type="button" onclick="order()" class="btn-order">주문</button>
+    </div>
+</div>
+
+
+</body>
+
+</html>
